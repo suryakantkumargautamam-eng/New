@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>CORTEXUS | Physiotherapy Review</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+padding:20px;
+background:#edf2f7;
+font-family:Segoe UI,sans-serif;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+background:#fff;
+padding:22px;
+border-radius:28px;
+box-shadow:0 15px 40px rgba(0,0,0,.12);
+}
+
+.logo{
+width:100%;
+border-radius:18px;
+display:block;
+margin-bottom:15px;
+}
+
+.thank{
+background:#f7f9fc;
+padding:14px;
+border-radius:14px;
+text-align:center;
+font-weight:700;
+color:#0d47a1;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:10px;
+}
+
+.card{
+padding:14px;
+border:1px solid #ddd;
+border-radius:14px;
+cursor:pointer;
+font-weight:600;
+}
+
+.card.active{
+border:2px solid #d4af37;
+}
+
+.btn{
+width:100%;
+padding:16px;
+border:none;
+border-radius:14px;
+font-weight:700;
+cursor:pointer;
+margin-top:12px;
+}
+
+.generate{
+background:#0d47a1;
+color:white;
+}
+
+.reviewbtn{
+background:#d4af37;
+color:#111;
+}
+
+textarea{
+width:100%;
+height:220px;
+margin-top:12px;
+padding:12px;
+border-radius:14px;
+border:1px solid #ddd;
+font-size:15px;
+}
+
+.note{
+text-align:center;
+font-size:13px;
+color:#555;
+margin-top:10px;
+}
+
+.footer{
+text-align:center;
+padding-top:20px;
+line-height:1.8;
+color:#444;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img src="cortexus-banner.jpg" class="logo">
+
+<div class="thank">
+THANK YOU FOR CHOOSING CORTEXUS
+</div>
+
+<h3>Select Service</h3>
+
+<div class="grid">
+
+<div class="card active" onclick="sel(this,'Back Pain Treatment')">
+Back Pain Treatment
+</div>
+
+<div class="card" onclick="sel(this,'Neck Pain Treatment')">
+Neck Pain Treatment
+</div>
+
+<div class="card" onclick="sel(this,'Knee Pain Treatment')">
+Knee Pain Treatment
+</div>
+
+<div class="card" onclick="sel(this,'Sciatica Treatment')">
+Sciatica Treatment
+</div>
+
+<div class="card" onclick="sel(this,'Frozen Shoulder Treatment')">
+Frozen Shoulder Treatment
+</div>
+
+<div class="card" onclick="sel(this,'Stroke Rehabilitation')">
+Stroke Rehabilitation
+</div>
+
+<div class="card" onclick="sel(this,'Paralysis Rehabilitation')">
+Paralysis Rehabilitation
+</div>
+
+<div class="card" onclick="sel(this,'Post Surgery Rehabilitation')">
+Post Surgery Rehabilitation
+</div>
+
+<div class="card" onclick="sel(this,'Neurological Physiotherapy')">
+Neurological Physiotherapy
+</div>
+
+<div class="card" onclick="sel(this,'Orthopedic Physiotherapy')">
+Orthopedic Physiotherapy
+</div>
+
+<div class="card" onclick="sel(this,'Sports Injury Rehabilitation')">
+Sports Injury Rehabilitation
+</div>
+
+<div class="card" onclick="sel(this,'Elderly Care Physiotherapy')">
+Elderly Care Physiotherapy
+</div>
+
+</div>
+
+<button class="btn generate" onclick="generateReview()">
+GENERATE REVIEW
+</button>
+
+<div class="note">
+Please edit the review according to your personal experience before posting.
+</div>
+
+<textarea id="review"></textarea>
+
+<button class="btn reviewbtn" onclick="copyAndOpen()">
+COPY REVIEW & OPEN GOOGLE REVIEW
+</button>
+
+<div class="footer">
+
+<b>Expert Care You Can Trust</b><br>
+Experienced Professionals<br>
+Personalized Treatment<br><br>
+
+Serving in Lucknow<br>
+
+<b>Better Movement. Better Life.</b>
+
+</div>
+
+</div>
+
+<script>
+
+let selected = "Back Pain Treatment";
+
+function sel(el,service){
+
+document.querySelectorAll(".card")
+.forEach(x=>x.classList.remove("active"));
+
+el.classList.add("active");
+
+selected = service;
+
+}
+
+
+/* =========================
+   REVIEW GENERATION
+   ========================= */
+
+const data = {
+
+"Back Pain Treatment":{
+problem:[
+"back pain",
+"lower back discomfort",
+"back stiffness",
+"difficulty with daily movements",
+"discomfort while sitting or standing",
+"pain while bending",
+"stiffness after sitting for long hours"
+]},
+
+"Neck Pain Treatment":{
+problem:[
+"neck pain",
+"neck stiffness",
+"restricted neck movement",
+"discomfort while working",
+"difficulty turning the neck",
+"stiffness after long working hours"
+]},
+
+"Knee Pain Treatment":{
+problem:[
+"knee pain",
+"knee stiffness",
+"difficulty walking",
+"difficulty bending the knee",
+"knee weakness",
+"discomfort while using stairs"
+]},
+
+"Sciatica Treatment":{
+problem:[
+"sciatica",
+"leg discomfort",
+"radiating pain",
+"difficulty walking",
+"movement difficulty",
+"discomfort while sitting"
+]},
+
+"Frozen Shoulder Treatment":{
+problem:[
+"frozen shoulder",
+"shoulder stiffness",
+"limited shoulder movement",
+"shoulder pain",
+"difficulty moving the shoulder",
+"difficulty with overhead movements"
+]},
+
+"Stroke Rehabilitation":{
+problem:[
+"stroke recovery",
+"balance problems after stroke",
+"weakness after stroke",
+"movement difficulties",
+"rehabilitation needs",
+"difficulty with functional movements"
+]},
+
+"Paralysis Rehabilitation":{
+problem:[
+"paralysis rehabilitation",
+"muscle weakness",
+"mobility problems",
+"movement difficulty",
+"difficulty with daily activities",
+"functional movement problems"
+]},
+
+"Post Surgery Rehabilitation":{
+problem:[
+"post-surgery recovery",
+"weakness after surgery",
+"movement restriction",
+"recovery after surgery",
+"returning to normal activity",
+"reduced mobility after surgery"
+]},
+
+"Neurological Physiotherapy":{
+problem:[
+"a neurological condition",
+"movement-control difficulty",
+"muscle weakness",
+"coordination difficulty",
+"mobility problems",
+"functional movement difficulty"
+]},
+
+"Orthopedic Physiotherapy":{
+problem:[
+"joint pain",
+"an orthopedic problem",
+"muscle-related difficulty",
+"movement restriction",
+"mobility difficulty",
+"joint stiffness"
+]},
+
+"Sports Injury Rehabilitation":{
+problem:[
+"a sports injury",
+"muscle injury",
+"returning to activity",
+"performance recovery",
+"movement restriction after injury",
+"recovery after a sports-related problem"
+]},
+
+"Elderly Care Physiotherapy":{
+problem:[
+"an elderly mobility issue",
+"age-related weakness",
+"balance problems",
+"walking difficulty",
+"difficulty with daily activities",
+"reduced mobility"
+]}
+
+};
+
+
+/* MANY DIFFERENT OPENINGS */
+
+const opening = [
+
+d => `I approached CORTEXUS for physiotherapy because I was dealing with ${random(d.problem)}.`,
+
+d => `My experience with CORTEXUS started when I needed help with ${random(d.problem)}.`,
+
+d => `I was looking for home physiotherapy for ${random(d.problem)} and contacted CORTEXUS.`,
+
+d => `For ${random(d.problem)}, I decided to try physiotherapy at home through CORTEXUS.`,
+
+d => `I needed professional physiotherapy support due to ${random(d.problem)}.`,
+
+d => `Getting physiotherapy at home was convenient for me because of ${random(d.problem)}.`,
+
+d => `One of the main reasons I contacted CORTEXUS was ${random(d.problem)}.`,
+
+d => `I was searching for a physiotherapy service that could help with ${random(d.problem)}.`,
+
+d => `CORTEXUS was the service I chose when I needed help with ${random(d.problem)}.`,
+
+d => `I decided to take physiotherapy guidance for ${random(d.problem)}.`,
+
+d => `Mujhe ${random(d.problem)} ki wajah se physiotherapy ki zarurat thi, so I contacted CORTEXUS.`,
+
+d => `Physiotherapy ke liye CORTEXUS se contact kiya because I was having ${random(d.problem)}.`,
+
+d => `Home physiotherapy ke liye CORTEXUS choose kiya because I was dealing with ${random(d.problem)}.`,
+
+d => `Mujhe ${random(d.problem)} tha, isliye I was looking for a reliable physiotherapy service.`,
+
+d => `I wanted a convenient home-visit option for ${random(d.problem)} and contacted CORTEXUS.`,
+
+d => `The reason I started physiotherapy was mainly ${random(d.problem)}.`,
+
+d => `I was having trouble because of ${random(d.problem)} and decided to seek physiotherapy.`,
+
+d => `CORTEXUS helped me start home physiotherapy for ${random(d.problem)}.`,
+
+d => `For my ${random(d.problem)}, I was looking for proper physiotherapy guidance.`,
+
+d => `Mera main concern ${random(d.problem)} tha, so I decided to consult CORTEXUS.`
+
+];
+
+
+/* DIFFERENT MIDDLE SENTENCES */
+
+const middle = [
+
+`The therapist explained the exercises clearly and gave proper guidance during the sessions.`,
+
+`The sessions were easy to follow and the therapist was patient while explaining the exercises.`,
+
+`Home visits were convenient, and the treatment was explained in a simple way.`,
+
+`The therapist listened to my concerns and explained the exercises properly.`,
+
+`Mujhe exercises samajhne mein easily help mili and the overall approach was professional.`,
+
+`The treatment was explained properly and the sessions were comfortable to follow.`,
+
+`I appreciated the professional behaviour and attention given during the sessions.`,
+
+`The home physiotherapy setup was convenient and the exercises were explained step by step.`,
+
+`Therapist ne patiently guide kiya and the exercises were easy to understand.`,
+
+`The communication was clear and I understood what I needed to work on between sessions.`,
+
+`The therapist was supportive and made the sessions easy to understand.`,
+
+`I liked the fact that the exercises were explained according to my condition.`,
+
+`Overall, the sessions felt organised and professionally handled.`,
+
+`Treatment ke saath exercises bhi properly explain ki gayi, which made things easier for me.`,
+
+`The therapist gave proper attention during the sessions and answered my questions patiently.`,
+
+`The home-visit service was convenient and saved me the trouble of travelling for every session.`,
+
+`I found the therapist professional, polite and easy to communicate with.`,
+
+`Exercises ko step by step explain kiya gaya, so following them was easier for me.`,
+
+`The sessions were handled patiently and I was comfortable asking questions.`,
+
+`I liked the personalised attention given during the physiotherapy sessions.`
+
+];
+
+
+/* ACTUAL EXPERIENCE FIELD */
+
+const resultPrompt = [
+
+`[Add your actual improvement here — for example, what changed in pain, movement, walking, strength or daily activity.]`,
+
+`[Write what you personally noticed after the sessions
